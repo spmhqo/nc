@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Content - Prompt Workspace</title>
+    <link rel="icon" href="spm.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf9f6;
+            --surface-color: #ffffff;
+            --border-color: #e2dfdc;
+            --border-focus: #706b63;
+            --text-main: #2c2a29;
+            --text-muted: #6e6963;
+            --accent: #1a1918;
+            --accent-hover: #383532;
+            --success: #2e7d32;
+            --header-color: #4338ca;
+            --font-serif: 'Newsreader', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .document-container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 48px 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+        }
+
+        .doc-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+
+        .doc-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--header-color);
+            margin-bottom: 8px;
+        }
+
+        .doc-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 36px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .output-card {
+            margin-top: 30px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .output-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .prompt-preview {
+            width: 100%;
+            min-height: 220px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-main);
+            line-height: 1.5;
+            resize: vertical;
+            white-space: pre-wrap;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn.copied {
+            background: var(--success);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-reset:hover {
+            background: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .doc-footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px 8px;
+            }
+            .document-container {
+                padding: 24px 16px;
+            }
+            .doc-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="document-container">
+        
+        <header class="doc-header">
+            <h1 class="doc-title">Natural Content</h1>
+            <p class="doc-subtitle">(the way I want to express my thoughts )</p>
+        </header>
+
+        <section>
+            <h2 class="section-heading">Prompt #1</h2>
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt Box 1</span>
+                    <div class="btn-group">
+                        <button class="btn btn-reset" onclick="resetPrompt(1)">Reset</button>
+                        <button class="btn" onclick="copyPrompt(1)">Copy to Clipboard</button>
+                    </div>
+                </div>
+                <textarea id="promptOutput1" class="prompt-preview" readonly></textarea>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-heading">Prompt #2</h2>
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt Box 2</span>
+                    <div class="btn-group">
+                        <button class="btn btn-reset" onclick="resetPrompt(2)">Reset</button>
+                        <button class="btn" onclick="copyPrompt(2)">Copy to Clipboard</button>
+                    </div>
+                </div>
+                <textarea id="promptOutput2" class="prompt-preview" readonly></textarea>
+            </div>
+        </section>
+
+        <footer class="doc-footer">
+            Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        const prompt1Text = `1, Preparation:
+
+উদাহরন / কাহিনী
+শব্দার্থ / চরিত্র বা ঘটনা / প্রেক্ষাপট বা ইতিহাস – বিজ্ঞান – নিয়ম প্রভৃতি:
+1, Surface level as it is
+শব্দার্থ / চরিত্র বা ঘটনা / প্রেক্ষাপট বা ইতিহাস – বিজ্ঞান – নিয়ম প্রভৃতি:
+2, as is in the perspective of insights (truth beyond surface level sight)
+Operational Rule = Message from Insight (as rule / hot take):
+উদাহরণে যে কর্ম (activity)-টা আছে তার নাম কি?
+সেই কর্ম (activity)-র জাতক কি? সেই জাতকের impact কি?
+সেই কর্ম (activity)-র কর্মসম্পাদনে যে রসদ (জাতকের origine) ব্যবহার হ’ল সেগুলো কি কি?
+
+2, Body:
+
+Hook – Q & A
+Introduction to issue, gravity of the issue
+Example
+Meaning
+Insight
+Operational Rule
+Closing (if the condition is this, follow this operational rule, follow this path to apply that rule, alert, if any, positive statement about outcome).
+
+3, Title: 
+
+মানব জীবনে Similar জাতক ও জাতকের impact গুলো কি কি?
+কখন (time) ও কোন জায়গায় (জীবনের phase / কর্মকান্ডের happening place) Similar জাতক ও জাতকের impact গুলোর প্রয়োজন হয়?
+
+4, Hook:
+
+Existing outlook / perspective / faith / belief -কে জোর একটা ধাক্কা মারা যায় কি বলে? 
+
+5, RULE (MANDATORY)
+
+গজেন্দ্র মোক্ষ কাহিনীটাতে ফোকাস নয় - ইস্যু, সলিউসন, প্রসেস / মেথড অফ ইমপ্লিমেন্টেসন, রেজাল্ট, ও রেজাল্টের ইম্প্যাক্ট - এই পাঁচের একটাতে ফোকাস, use কাহিনীটা as if it is mere a suitable example.`;
+
+        const prompt2Text = `এই চ্যাটে আমার স্পষ্ট নির্দেশ ছাড়া তুমি নিজে থেকে আমার কোনও বক্তব্য, যুক্তি, ধারণা, মতামত, উদ্দেশ্য বা অর্থ পরিবর্তন করবে না। আমি যা বলেছি, তার কোনও অংশ নিজের সিদ্ধান্তে বাদ দেবে না, নতুন কিছু যোগ করবে না বা অন্যভাবে উপস্থাপন করবে না। কোনও পরিবর্তন করার প্রয়োজন মনে হলে, আগে আমার অনুমতি চাইবে।
+
+এই চ্যাটে তোমার প্রধান দায়িত্ব হল, আমি যা যেভাবে বলতে চাই, তা আগে আমার দৃষ্টিভঙ্গি ও উদ্দেশ্য অনুযায়ী সঠিকভাবে বোঝা। তারপর আমার বক্তব্যের মূল অর্থ, যুক্তি ও অভিপ্রায় অক্ষুণ্ণ রেখে, সেটি প্রকাশ করার জন্য সবচেয়ে উপযুক্ত শব্দ, বাক্যগঠন এবং প্রকাশভঙ্গি খুঁজে পেতে আমাকে সাহায্য করা।
+
+তোমার কাজ আমার হয়ে নিজের মতো করে কিছু বলা বা আমার চিন্তাকে নিজের মতো করে পুনর্গঠন করা নয়। বরং, আমি আসলে কী বলতে চাই, সেটি যথাযথভাবে প্রকাশ করার জন্য আমাকে সাহায্য করা।
+
+আমার বক্তব্যের অর্থ বা উদ্দেশ্য বুঝতে অসুবিধা হলে, নিজের মতো করে অনুমান করে এগিয়ে যাবে না। বরং, প্রয়োজনীয় প্রশ্ন করে আমার বক্তব্যটি পরিষ্কার করে নেবে।`;
+
+        function initPrompts() {
+            document.getElementById('promptOutput1').value = prompt1Text;
+            document.getElementById('promptOutput2').value = prompt2Text;
+        }
+
+        function resetPrompt(id) {
+            if (id === 1) {
+                document.getElementById('promptOutput1').value = prompt1Text;
+            } else if (id === 2) {
+                document.getElementById('promptOutput2').value = prompt2Text;
+            }
+        }
+
+        function copyPrompt(id) {
+            const outputBox = document.getElementById('promptOutput' + id);
+            const btn = event.target;
+
+            outputBox.select();
+            outputBox.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+
+                window.getSelection().removeAllRanges();
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        }
+
+        window.onload = initPrompts;
+    </script>
+</body>
+</html>
