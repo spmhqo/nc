@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Plan - Prompt Workspace</title>
+    <link rel="icon" href="spm.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf9f6;
+            --surface-color: #ffffff;
+            --border-color: #e2dfdc;
+            --border-focus: #706b63;
+            --text-main: #2c2a29;
+            --text-muted: #6e6963;
+            --accent: #1a1918;
+            --accent-hover: #383532;
+            --success: #2e7d32;
+            --header-color: #4338ca;
+            --font-serif: 'Newsreader', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .document-container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 48px 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Header Styles */
+        .doc-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+
+        .doc-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--header-color);
+            margin-bottom: 8px;
+        }
+
+        .doc-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Section Layout */
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 36px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        /* Output Box Styling */
+        .output-card {
+            margin-bottom: 24px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .output-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .prompt-preview {
+            width: 100%;
+            min-height: 160px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-main);
+            line-height: 1.5;
+            resize: vertical;
+            white-space: pre-wrap;
+            margin-bottom: 16px;
+        }
+
+        .copy-btn {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+        }
+
+        /* Footer */
+        .doc-footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            body {
+                padding: 12px 8px;
+            }
+            .document-container {
+                padding: 24px 16px;
+            }
+            .doc-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="document-container">
+        
+        <!-- Header -->
+        <header class="doc-header">
+            <h1 class="doc-title">Book Plan</h1>
+            <p class="doc-subtitle">(own book)</p>
+        </header>
+
+        <!-- Prompts Section -->
+        <section>
+            <h2 class="section-heading">Prompts Collection</h2>
+            
+            <!-- Prompt #1 -->
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt #1</span>
+                </div>
+                <textarea id="prompt1" class="prompt-preview" readonly>মানুষের, প্রায় অধিকাংশ মানুষের জীবনে একটা acute সমস্যা হল - জীবনে adverse situation arise করলে, সততার সঙ্গে হাজার চেষ্টা করেও situation কে নিজের অনুকূলে আনতে না পারা
+
+এই সমস্যার সমাধান পদ্ধতিটা সম্বন্ধে আমি একটা বই লিখতে চাই।
+
+আমাকে ১০টা book title, sub-title ও সেগুলোর taglines দাও</textarea>
+                <button class="copy-btn" onclick="copyPrompt('prompt1', this)">Copy to Clipboard</button>
+            </div>
+
+            <!-- Prompt #2 -->
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt #2</span>
+                </div>
+                <textarea id="prompt2" class="prompt-preview" readonly>বইটার KDP description কি হবে? বাংলা ও ইংরেজি - দুটো versionই দাও</textarea>
+                <button class="copy-btn" onclick="copyPrompt('prompt2', this)">Copy to Clipboard</button>
+            </div>
+
+            <!-- Prompt #3 -->
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt #3</span>
+                </div>
+                <textarea id="prompt3" class="prompt-preview" readonly>এবার তুমি আমাকে একটা আউটলাইন দাও - পর্ব ও অধ্যায় সহ - কোন পর্ব ও কোন অধ্যায় কি delivery দেবে - সেটাও উল্লেখ করে দেবে। পর্বগুলো লেখার সময় একটা সমস্যার আলোচনা নিয়ে একটা অধ্যায় হবে</textarea>
+                <button class="copy-btn" onclick="copyPrompt('prompt3', this)">Copy to Clipboard</button>
+            </div>
+
+            <!-- Prompt #4 -->
+            <div class="output-card">
+                <div class="output-header">
+                    <span class="output-title">Prompt #4</span>
+                </div>
+                <textarea id="prompt4" class="prompt-preview" readonly>সমস্ত অধ্যায়গুলোর ১টা বুলেট লিস্ট দাও - সঙ্গে নীচে উল্লেখ করা ৬টা প্রশ্নের উত্তর সহ ৬ কলামের একটা টেবল তৈরি করে দাও -
+১, অধ্যায় নাম্বার 
+২, পাঠকের মূল প্রশ্ন কি?
+৩, এই অধ্যায়ের Promise-টা কি?
+৪, এই অধ্যায়ে কি deliver করতে হবে?
+৫, অধ্যায়ের শিরোনাম কি হবে? এই শিরোনামটা কোন জিনিসটাকে কেন্দ্র করে লেখা হয়েছে?: সমস্যা, সমাধান, সমাধানের প্রভাব (transformation), activity name - এগুলোর কোনোটা না কি এগুলো ছাড়া অন্য কিছু?
+৬, অধ্যায়ের উপশিরোনাম কি হবে? শিরোনামের Promise-কে তা কিভাবে আরও strong করছে।</textarea>
+                <button class="copy-btn" onclick="copyPrompt('prompt4', this)">Copy to Clipboard</button>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="doc-footer">
+            Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        // Copy functionality with visual feedback
+        function copyPrompt(elementId, btn) {
+            const outputBox = document.getElementById(elementId);
+
+            outputBox.select();
+            outputBox.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+
+                window.getSelection().removeAllRanges();
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        }
+    </script>
+</body>
+</html>
